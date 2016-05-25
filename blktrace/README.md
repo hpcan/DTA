@@ -1,4 +1,4 @@
 #Usage:
 ```bash
-python blktrace_analyzer -i inputFileName
+python blktrace_analyzer.py -i inputFileName
 ```
