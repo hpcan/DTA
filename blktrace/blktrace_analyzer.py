@@ -122,10 +122,10 @@ def analyseBLKTraceFile(trace):
     with open(trace,"r") as traceFile:
         for line in traceFile:
             tokenizedLine =[token for token in line.split()]
-            currentTime = line[1]
-            currentAddress = line[3]
-            requestSize = line [4]
-            deviceID = line[2]
+            currentTime = tokenizedLine[1]
+            currentAddress = tokenizedLine[3]
+            requestSize = tokenizedLine[4]
+            deviceID = tokenizedLine[2]
 
             if(lastTime == 0):
                 lastTime = currentTime
