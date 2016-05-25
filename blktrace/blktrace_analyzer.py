@@ -286,14 +286,16 @@ def create_excel(traceFile):
     mySheet.write(0,2 , "Arrival Time")
     mySheet.write(0,3 , "Address")
     mySheet.write(0,4 , "Size")
+    mySheet.write(0,5 , "Type")
     with open(traceFile, 'r') as inF:
         lineIndex = 1
         for line in inF:
             tolenizedLine = [token for token in line.split()]
-            mySheet.write(lineIndex,0,tokenizedLine[0])					
-            mySheet.write(lineIndex,1,tokenizedLine[1])
-            mySheet.write(lineIndex,2,tokenizedLine[3])
-            mySheet.write(lineIndex,3,tokenizedLine[4])        
+            mySheet.write(lineIndex,1,tokenizedLine[0])					
+            mySheet.write(lineIndex,2,tokenizedLine[1])
+            mySheet.write(lineIndex,3,tokenizedLine[3])
+            mySheet.write(lineIndex,4,tokenizedLine[4])
+            mySheet.write(lineIndex,5,tokenizedLine[5])
             lineIndex+=1
                                     
     book.save(traceFile + '.xls')
@@ -305,21 +307,24 @@ def create_excel(traceFile):
     finalSheet.write(0,2 , "Arrival Time")
     finalSheet.write(0,3 , "Address")
     finalSheet.write(0,4 , "Size")
-    finalSheet.write(0,5 , "Interval")
+    finalSheet.write(0,5 , "Type")
+    finalSheet.write(0,6 , "Interval")
     curBook = open_workbook(xf)
     curSheet = curBook.sheet_by_index(0)
     pids = curSheet.col_values(1,1)
     arrivalTimes = curSheet.col_values(2,1)
     addresses = curSheet.col_values(3,1)
     sizes = curSheet.col_values(4,1)
+    types = sizes = curSheet.col_values(5,1)
     for i in range(len(pids)):
             curSheet.write(i+1,1,pids[i])
             curSheet.write(i+1,2,arrivalTimes[i])
             curSheet.write(i+1,3,addresses[i])
             curSheet.write(i+1,4,sizes[i])
+            curSheet.write(i+1,5,types[i])
 
     for i in range(len(opsVals)):
-        opsSheet.write( i+1 ,5, Formula('SUB(C'+str(i+2)+':C'+str(i+1)+')' ))
+        opsSheet.write( i+1 ,6, Formula('SUB(C'+str(i+2)+':C'+str(i+1)+')' ))
      
     finalBook.save('FINAL_BLKTRACE_EXCEL.xls')
     finalBook.save(TemporaryFile())
