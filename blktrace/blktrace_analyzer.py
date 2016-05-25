@@ -19,9 +19,10 @@
 # <summary>                                                                                     #
 # {one line to give the program's name and a brief idea of what it does.}                       #
 #                                                                                               #
-# Email: arasht@ipm.ir                                                                          #
-#        afbcesh91@gmail.com                                                                    #
-#        mahdi0khosravi@gmail.com                                                               #
+# Email: 
+#       arasht@ipm.ir                                                                          #
+#       afbcesh91@gmail.com                                                                    #
+#       mahdi0khosravi@gmail.com                                                               #
 # </summary>                                                                                    #
 ################################################################################################
 
