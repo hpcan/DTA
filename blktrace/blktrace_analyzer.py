@@ -133,8 +133,9 @@ def analyseBLKTraceFile(trace):
                 LSA = currentAddress
                 SectorCount = requestSize
                 lastLSA = LSA + SectorCount - 1
-                for (; LSA < lastLSA; LSA++):
+                while (LSA < lastLSA):
                     LPAReadSet.Add(LSA / subPagePerPage)
+                    LSA+=1
 
                 totalReadDataTransfer += requestSize
                 if (requestSize < 1):
@@ -151,8 +152,9 @@ def analyseBLKTraceFile(trace):
                 LSA = currentAddress
                 SectorCount = requestSize
                 lastLSA = LSA + SectorCount - 1
-                for (; LSA < lastLSA; LSA++):
-                    LPAWriteSet.Add(LSA / subPagePerPage)                
+                while ( LSA < lastLSA):
+                    LPAWriteSet.Add(LSA / subPagePerPage)
+                    LSA+=1
                 totalWriteDataTransfer += requestSize
                 if (requestSize < 1):
                    GMEANW += log(1)
@@ -172,9 +174,10 @@ def analyseBLKTraceFile(trace):
             lastLSA = LSA + SectorCount - 1
             LBAStartSet.Add(LSA)
             LPAStartSet.Add(LSA / subPagePerPage);
-            for (; LSA < lastLSA; LSA++):
+            while (LSA < lastLSA):
                 LBAAllSet.Add(LSA)
-                LPAAllSet.Add(LSA / subPagePerPage)                
+                LPAAllSet.Add(LSA / subPagePerPage)
+                LSA+=1
             totalDataTransfer += requestSize
             if (requestSize < 1):
                 GMEAN += log(1)
